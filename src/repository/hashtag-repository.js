@@ -55,7 +55,7 @@ class HashtagRepository {
     try {
       const response = await Hashtag.find({
         title: titleList,
-      }).select("title -_id");
+      });
       return response;
     } catch (error) {
       console.log("Error Occurred in Repository Layer");
