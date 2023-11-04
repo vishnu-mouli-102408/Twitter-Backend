@@ -21,7 +21,7 @@ const setUpAndStartServer = async () => {
 
     const ser = new TweetService();
     const tweet = await ser.create({
-      content: "Not #Alone",
+      content: "No more #Dissappointments",
     });
   });
 };
