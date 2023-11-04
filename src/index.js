@@ -5,7 +5,7 @@ import { connect } from "./config/databaseConfig.js";
 
 import apiRoutes from "./routes/index.js";
 
-// import { TweetService } from "./services/index.js";
+import { TweetService } from "./services/index.js";
 
 const setUpAndStartServer = async () => {
   const app = express();
@@ -19,8 +19,10 @@ const setUpAndStartServer = async () => {
     await connect();
     console.log("MongoDB Connected");
 
-    // const ser = new TweetService();
-    // const tweet = await ser.create({ content: "This is a #refactor code" });
+    const ser = new TweetService();
+    const tweet = await ser.create({
+      content: "Not #Alone",
+    });
   });
 };
 
