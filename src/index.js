@@ -5,8 +5,6 @@ import { connect } from "./config/databaseConfig.js";
 
 import apiRoutes from "./routes/index.js";
 
-import { TweetService } from "./services/index.js";
-
 const setUpAndStartServer = async () => {
   const app = express();
   app.use(bodyParser.json());
@@ -18,11 +16,6 @@ const setUpAndStartServer = async () => {
     console.log(`Server started at port ${PORT}`);
     await connect();
     console.log("MongoDB Connected");
-
-    const ser = new TweetService();
-    const tweet = await ser.create({
-      content: "No more #Dissappointments",
-    });
   });
 };
 
