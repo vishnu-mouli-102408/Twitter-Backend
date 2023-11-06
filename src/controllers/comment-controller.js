@@ -1,19 +1,20 @@
-import { LikeService } from "../services/index.js";
+import { CommentService } from "../services/index.js";
 import { StatusCodes } from "http-status-codes";
 
-const likeService = new LikeService();
+const commentService = new CommentService();
 
-export const toggleLike = async (req, res) => {
+export const createComment = async (req, res) => {
   try {
-    const response = await likeService.toggleLike(
+    const response = await commentService.createComment(
       req.query.modelType,
       req.query.modelId,
-      req.body.userId
+      req.body.userId,
+      req.body.content
     );
     return res.status(StatusCodes.CREATED).json({
       data: response,
       success: true,
-      message: "Successfully Liked ",
+      message: "Successfully Commented ",
       err: {},
     });
   } catch (error) {
@@ -21,7 +22,7 @@ export const toggleLike = async (req, res) => {
     return res.status(StatusCodes.BAD_GATEWAY).json({
       data: {},
       success: false,
-      message: "Can't like",
+      message: "Can't Create Comment",
       err: error,
     });
   }

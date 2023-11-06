@@ -22,3 +22,23 @@ export const create = async (req, res) => {
     });
   }
 };
+
+export const getWithComments = async (req, res) => {
+  try {
+    const response = await tweetService.getWithComments(req.params.id);
+    return res.status(StatusCodes.OK).json({
+      data: response,
+      success: true,
+      message: "Successfully Fetched a tweets",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(StatusCodes.BAD_GATEWAY).json({
+      data: {},
+      success: false,
+      message: "Can't Fetch tweets",
+      err: error,
+    });
+  }
+};
