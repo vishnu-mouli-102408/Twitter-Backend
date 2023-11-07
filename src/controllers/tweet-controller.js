@@ -13,7 +13,6 @@ export const create = async (req, res) => {
       if (err) {
         return res.status(500).json({ error: err });
       }
-      console.log("Data", data);
       const b64 = Buffer.from(req.file.buffer).toString("base64");
       let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
       const cldRes = await handleUpload(dataURI);
