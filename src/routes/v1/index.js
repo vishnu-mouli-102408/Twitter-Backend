@@ -8,11 +8,14 @@ import {
   UserController,
 } from "../../controllers/index.js";
 
-router.post("/tweets", TweetController.create);
-router.post("/likes/toggle", LikeController.toggleLike);
-router.post("/comments", CommentController.createComment);
-router.get("/tweets/:id", TweetController.getWithComments);
+import { authenticate } from "../../middlewares/authenticate.js";
+
+router.post("/tweets", authenticate, TweetController.create);
+router.post("/likes/toggle", authenticate, LikeController.toggleLike);
+router.post("/comments", authenticate, CommentController.createComment);
+router.get("/tweets/:id", authenticate, TweetController.getWithComments);
 
 router.post("/signup", UserController.signup);
+router.post("/signin", UserController.signIn);
 
 export default router;

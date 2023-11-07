@@ -26,3 +26,26 @@ export const signup = async (req, res) => {
     });
   }
 };
+
+export const signIn = async (req, res) => {
+  try {
+    const response = await userService.signIn(
+      req.body.email,
+      req.body.password
+    );
+    return res.status(StatusCodes.OK).json({
+      data: response,
+      success: true,
+      message: "Successfully Logged in.",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(StatusCodes.BAD_GATEWAY).json({
+      data: {},
+      success: false,
+      message: "Can't Login",
+      err: error,
+    });
+  }
+};
