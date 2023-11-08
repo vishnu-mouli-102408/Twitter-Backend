@@ -8,7 +8,7 @@ class CrudRepository {
       const response = await this.model.create(data);
       return response;
     } catch (error) {
-      console.log("Error occured in Repository Layer");
+      // console.log("Error occured in Repository Layer");
       throw error;
     }
   }
